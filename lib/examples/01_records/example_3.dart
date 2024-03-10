@@ -34,18 +34,36 @@ class _Example3State extends State<Example3> {
       ),
     );
 
-    // final results = filterEmployees(
-    //   filter,
-    //   employees,
-    // );
-
-    final results =
-        await compute(filterEmployees, (fields: filter, employees: employees));
+    final results = filterEmployees(
+      filter,
+      employees,
+    );
 
     setState(() {
       filterResult.addAll(results);
     });
   }
+
+  //  void getData() async {
+  //   final random = Random();
+  //   final filter = Fields(age: 30, salary: 3000);
+  //   final employees = List.generate(
+  //     1000000,
+  //     (index) => Employee(
+  //       name: 'name-$index',
+  //       salary:
+  //           1000 + random.nextDouble() * 5000, // salary is >= 1000 and <= 6000
+  //       age: 18 + random.nextInt(50), // age is >= 18 and <= 68
+  //     ),
+  //   );
+
+  //   final results =
+  //       await compute(filterEmployees, (fields: filter, employees: employees));
+
+  //   setState(() {
+  //     filterResult.addAll(results);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -67,18 +85,31 @@ class _Example3State extends State<Example3> {
 }
 
 List<Employee> filterEmployees(
-    ({
-      Fields fields,
-      List<Employee> employees,
-    }) record) {
-  final age = record.fields.age;
-  final salary = record.fields.salary;
-  return record.employees
+  Fields fields,
+  List<Employee> employees,
+) {
+  final age = fields.age;
+  final salary = fields.salary;
+  return employees
       .where(
         (e) => e.age >= age && e.salary >= salary,
       )
       .toList();
 }
+
+// List<Employee> filterEmployees(
+//     ({
+//       Fields fields,
+//       List<Employee> employees,
+//     }) record) {
+//   final age = record.fields.age;
+//   final salary = record.fields.salary;
+//   return record.employees
+//       .where(
+//         (e) => e.age >= age && e.salary >= salary,
+//       )
+//       .toList();
+// }
 
 class Fields {
   final int age;
