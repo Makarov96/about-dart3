@@ -65,3 +65,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+class ClassName extends ChangeNotifier {}

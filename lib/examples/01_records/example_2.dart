@@ -28,19 +28,6 @@ class _Example2State extends State<Example2> {
     setState(() {});
   }
 
-  // void getData() async {
-  //   final futures = [
-  //     getUser(),
-  //     getCharacter(),
-  //   ];
-  //   final (e, c) = await (getUser(), getCharacter()).wait;
-
-  //   setState(() {
-  //     employee = e;
-  //     character = c;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

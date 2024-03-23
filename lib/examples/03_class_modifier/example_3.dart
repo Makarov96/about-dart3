@@ -1,24 +1,30 @@
+import 'dart:developer';
+
 void main() {
   final state = getState();
 
   if (state is LoadingState) {
+    log('Loading state');
   } else if (state is LoadedState) {
-  } else if (state is FailedState) {}
+    log('Loaded state');
+  } else if (state is FailedState) {
+    log('failure state');
+  }
 
   switch (state) {
     case LoadingState():
-      print('Loading');
+      log('Loading');
     case LoadedState(data: final data):
       state.data;
-      print('Loaded $data');
+      log('Loaded $data');
     case FailedState():
-      print('Failed');
+      log('failure state');
   }
 }
 
 State getState() => LoadedState("fake data");
 
-sealed class State {}
+abstract class State {}
 
 class LoadingState extends State {}
 
@@ -28,7 +34,3 @@ class LoadedState extends State {
 }
 
 class FailedState extends State {}
-
-abstract interface class InterfaceClass {
-  void example();
-}

@@ -15,6 +15,7 @@ class Example1 extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             final error = getRandomError();
+
             final result = mapError(error);
 
             FlutterMastersDialog.show(
@@ -44,18 +45,6 @@ class Example1 extends StatelessWidget {
         return const IconMessage(icon: Icons.logout, message: 'Unauthorized');
     }
   }
-
-//  ({IconData icon, String message}) mapError(RequestError error) {
-//    return switch (error) {
-//        RequestError.network=>
-//          const (icon: Icons.close, message: 'Network error'),
-//        RequestError.notFound=>
-//          const (
-//             icon: Icons.code, message: 'Resource not found'),
-//        RequestError.unauthorized=>
-//          const (icon: Icons.logout, message: 'Unauthorized'),
-//     };
-//   }
 }
 
 class IconMessage {
